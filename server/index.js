@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cors());
 app.use(
   cors({
-    origin: ["http://139.59.60.185", "http://yourdomain.com"],
+    origin: ["https://zingy-marshmallow-ac4892.netlify.app/"],
   })
 );
 
