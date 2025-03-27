@@ -37,7 +37,7 @@ const AddonProducts = () => {
 
   const fetchAddonProducts = async () => {
     try {
-      const response = await axios.get("http://139.59.60.185:3001/addonproducts");
+      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/addonproducts`);
       setAddonProducts(response.data);
     } catch (error) {
       console.error("Failed to fetch addon products:", error);
@@ -59,7 +59,7 @@ const AddonProducts = () => {
   const handleDelete = async (id) => {
     setLoading(true);
     try {
-      await axios.delete(`http://139.59.60.185:3001/addonproducts/${id}`);
+      await axios.delete(`${import.meta.env.VITE_APP_SERVER_URL}/addonproducts/${id}`);
       setAddonProducts(addonProducts.filter((product) => product._id !== id));
       message.success("Product deleted successfully!");
     } catch (error) {
@@ -85,7 +85,7 @@ const AddonProducts = () => {
 
       // Send the request to create a new product
       const response = await axios.post(
-        "http://139.59.60.185:3001/addonproducts",
+        `${import.meta.env.VITE_APP_SERVER_URL}/addonproducts`,
         formData,
         {
           headers: {
@@ -125,7 +125,7 @@ const AddonProducts = () => {
       }
 
       const response = await axios.put(
-        `http://139.59.60.185:3001/addonproducts/${currentProduct._id}`,
+        `${import.meta.env.VITE_APP_SERVER_URL}/addonproducts/${currentProduct._id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -314,7 +314,7 @@ const AddonProducts = () => {
               {newProductData.image &&
                 (typeof newProductData.image === "string" ? (
                   <img
-                    src={`http://139.59.60.185:3001/uploads/${newProductData.image}`}
+                    src={`${import.meta.env.VITE_APP_SERVER_URL}/uploads/${newProductData.image}`}
                     alt="Product"
                     style={{
                       width: "100%",

@@ -37,9 +37,8 @@ const BranchOrder = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get(
-        "http://139.59.60.185:3001/productcategories"
-      );
+      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/productcategories`);
+
       setCategories(response.data);
     } catch (error) {
       console.error("Failed to fetch categories:", error);
@@ -48,7 +47,7 @@ const BranchOrder = () => {
 
   const fetchProducts = async (savedFavourites) => {
     try {
-      const response = await axios.get("http://139.59.60.185:3001/pastries");
+      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/pastries`);
       const productsWithQuantity = response.data.map((product) => ({
         ...product,
         quantity: 0,

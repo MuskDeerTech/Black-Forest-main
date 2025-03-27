@@ -48,7 +48,7 @@ const OrderHistory = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://139.59.60.185:3001/orders?limit=${limit}`
+        `${import.meta.env.VITE_APP_SERVER_URL}/orders?limit=${limit}`
       );
 
       const data = response.data;
@@ -136,7 +136,7 @@ const OrderHistory = () => {
 
     try {
       await axios.put(
-        `http://139.59.60.185:3001/orders/${orderId}/response`,
+        `${import.meta.env.VITE_APP_SERVER_URL}/orders/${orderId}/response`,
         { response: newResponse }
       );
       message.success(`Response for Order ${orderId} updated to: ${newResponse}`);

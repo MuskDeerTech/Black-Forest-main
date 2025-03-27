@@ -45,7 +45,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchBranches = async () => {
       try {
-        const response = await axios.get("http://139.59.60.185:3001/stores");
+        const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/stores`);
         if (response.data) {
           setBranches(response.data);
         }
@@ -121,7 +121,7 @@ const Cart = () => {
   
       console.log("Order Data:", orderData);
   
-      const response = await axios.post("http://139.59.60.185:3001/orderplaceds", {
+      const response = await axios.post(`${import.meta.env.VITE_APP_SERVER_URL}/orderplaceds`, {
         products: orderData,
         totalAmount,
         isStockOrder,

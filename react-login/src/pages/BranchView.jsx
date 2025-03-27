@@ -28,7 +28,7 @@ const BranchView = () => {
     const fetchBranches = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("http://139.59.60.185:3001/stores");
+        const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/stores`);
         if (response.data) {
           setBranches(response.data);
         }
@@ -65,7 +65,7 @@ const BranchView = () => {
         }
 
         const response = await axios.get(
-          "http://139.59.60.185:3001/orderplaceds",
+          `${import.meta.env.VITE_APP_SERVER_URL}/orderplaceds`,
           {
             params: filters,
           }

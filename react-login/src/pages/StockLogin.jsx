@@ -18,7 +18,7 @@ const StockLogin = () => {
 
   const handleSuperAdminSubmit = async (values) => {
     try {
-      const response = await axios.post("http://139.59.60.185:3001/superadmin-login", {
+      const response = await axios.post(`${import.meta.env.VITE_APP_SERVER_URL}/superadmin-login`, {
         adminID: values.adminID,
         password: values.password,
       });

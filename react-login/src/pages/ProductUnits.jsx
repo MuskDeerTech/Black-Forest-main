@@ -29,7 +29,7 @@ const ProductUnits = () => {
 
   const fetchUnits = async () => {
     try {
-      const response = await fetch("http://139.59.60.185:3001/productunits");
+      const response = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/productunits`);
       if (response.ok) {
         const data = await response.json();
         setUnits(data);
@@ -50,7 +50,7 @@ const ProductUnits = () => {
     setLoading(true);
     console.log("Deleting unit with ID:", id);  // Add a log to check the ID
     try {
-      const response = await fetch(`http://139.59.60.185:3001/productunits/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/productunits/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -73,7 +73,7 @@ const ProductUnits = () => {
     const updatedUnit = { name: currentUnit.name };
     try {
       const response = await fetch(
-        `http://139.59.60.185:3001/productunits/${currentUnit._id}`,
+        `${import.meta.env.VITE_APP_SERVER_URL}/productunits/${currentUnit._id}`,
         {
           method: "PUT",
           headers: {
@@ -109,7 +109,7 @@ const ProductUnits = () => {
       name: newUnitName,
     };
     try {
-      const response = await fetch("http://139.59.60.185:3001/productunits", {
+      const response = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/productunits`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -36,14 +36,14 @@ const Login = () => {
     setIsLoading(true);
   
     try {
-      const response = await axios.post("http://139.59.60.185:3001/login", {
+      const response = await axios.post(`${import.meta.env.VITE_APP_SERVER_URL}/login`, {
         username: values.username,
         password: values.password,
       });
   
       if (response.status === 200 && response.data === "Login Successful") {
         const user = await axios.get(
-          `http://139.59.60.185:3001/getUserByUsername/${values.username}`
+          `${import.meta.env.VITE_APP_SERVER_URL}/getUserByUsername/${values.username}`
         );
         const accessList = user.data.access || [];
         localStorage.setItem("role", user.data.type);

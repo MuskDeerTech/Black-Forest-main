@@ -73,7 +73,7 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://139.59.60.185:3001/products");
+      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/products`);
       setProducts(response.data);
     } catch (error) {
       console.error("Failed to fetch products:", error);
@@ -83,7 +83,7 @@ const Products = () => {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "http://139.59.60.185:3001/productcategories"
+        `${import.meta.env.VITE_APP_SERVER_URL}/productcategories`
       );
       console.log("Categories fetched:", response.data); // Check if data is correct
       const filteredCategories = response.data.filter(
@@ -97,7 +97,7 @@ const Products = () => {
 
   const fetchAlbums = async () => {
     try {
-      const response = await axios.get("http://139.59.60.185:3001/albums");
+      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/albums`);
       console.log("Albums fetched:", response.data);
       setAlbums(response.data);
     } catch (error) {
@@ -107,7 +107,7 @@ const Products = () => {
 
   const fetchUnits = async () => {
     try {
-      const response = await axios.get("http://139.59.60.185:3001/productunits");
+      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/productunits`);
       console.log("Units fetched:", response.data);
       setUnits(response.data);
     } catch (error) {
@@ -136,7 +136,7 @@ const Products = () => {
   
       // Make the API call to create a new product
       const response = await axios.post(
-        "http://139.59.60.185:3001/products",
+        `${import.meta.env.VITE_APP_SERVER_URL}/products`,
         formData,
         {
           headers: {
@@ -189,7 +189,7 @@ const Products = () => {
       });
 
       const response = await axios.put(
-        `http://139.59.60.185:3001/products/${currentProduct._id}`,
+        `${import.meta.env.VITE_APP_SERVER_URL}/products/${currentProduct._id}`,
         formData,
         {
           headers: {
@@ -231,7 +231,7 @@ const Products = () => {
   const handleDelete = async (id) => {
     setLoading(true);
     try {
-      await axios.delete(`http://139.59.60.185:3001/products/${id}`);
+      await axios.delete(`${import.meta.env.VITE_APP_SERVER_URL}/products/${id}`);
       setProducts(products.filter((product) => product._id !== id));
       message.success("Product deleted successfully!");
     } catch (error) {
@@ -313,7 +313,7 @@ const Products = () => {
         uid: image,
         name: image,
         status: "done",
-        url: `http://139.59.60.185:3001/uploads/${image}`, // Adjust the URL based on your backend
+        url: `${import.meta.env.VITE_APP_SERVER_URL}/uploads/${image}`, // Adjust the URL based on your backend
       })),
       price: product.price?.length
         ? product.price.map((priceDetail) => ({

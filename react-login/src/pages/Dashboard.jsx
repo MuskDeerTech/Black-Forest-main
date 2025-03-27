@@ -126,7 +126,7 @@ const Dashboard = () => {
   const handleLogout = () => {
     const username = localStorage.getItem("username");
     axios
-      .post("http://139.59.60.185:3001/logout", { username })
+      .post(`${import.meta.env.VITE_APP_SERVER_URL}/logout`, { username })
       .then(() => {
         localStorage.clear();
         navigate("/login");
@@ -140,7 +140,7 @@ const Dashboard = () => {
   const fetchStores = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://139.59.60.185:3001/stores");
+      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/stores`);
       setStores(response.data);
       setFilteredStores(response.data);
     } catch (error) {

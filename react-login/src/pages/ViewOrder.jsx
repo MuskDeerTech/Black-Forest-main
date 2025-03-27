@@ -29,7 +29,7 @@ const ViewOrder = () => {
       try {
         console.log("Fetching Order ID:", orderId); // Log order ID
         const response = await axios.get(
-          `http://139.59.60.185:3001/orderplaceds/${orderId}`
+          `${import.meta.env.VITE_APP_SERVER_URL}/orderplaceds/${orderId}`
         );
         console.log("API Response:", response.data); // Log API response
 
@@ -126,7 +126,7 @@ const ViewOrder = () => {
       console.log("Sending to Backend:", updatedProducts); // Debug the payload
 
       const response = await axios.put(
-        `http://139.59.60.185:3001/orderplaceds/${orderId}`,
+        `${import.meta.env.VITE_APP_SERVER_URL}/orderplaceds/${orderId}`,
         {
           products: updatedProducts, // Send updated products
         }

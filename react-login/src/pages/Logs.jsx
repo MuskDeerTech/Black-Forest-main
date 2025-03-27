@@ -11,7 +11,7 @@ const Logs = () => {
   const fetchLogs = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://139.59.60.185:3001/userdatas");
+      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}/userdatas`);
       setLogs(response.data);
     } catch (error) {
       console.error("Error fetching logs:", error);

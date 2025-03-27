@@ -31,7 +31,7 @@ const Albums = () => {
 
   const fetchAlbums = async () => {
     try {
-      const response = await fetch("http://139.59.60.185:3001/albums");
+      const response = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/albums`);
       if (response.ok) {
         const data = await response.json();
         setAlbums(data);
@@ -59,7 +59,7 @@ const Albums = () => {
       isActive, // Include isActive when creating a new album
     };
     try {
-      const response = await fetch("http://139.59.60.185:3001/albums", {
+      const response = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/albums`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +92,7 @@ const Albums = () => {
   
     try {
       const response = await fetch(
-        `http://139.59.60.185:3001/albums/${currentAlbum._id}`,
+        `${import.meta.env.VITE_APP_SERVER_URL}/albums/${currentAlbum._id}`,
         {
           method: "PUT",
           headers: {
@@ -135,7 +135,7 @@ const Albums = () => {
       setLoading(true);
       console.log("Deleting unit with ID:", id);  // Add a log to check the ID
       try {
-        const response = await fetch(`http://139.59.60.185:3001/albums/${id}`, {
+        const response = await fetch(`${import.meta.env.VITE_APP_SERVER_URL}/albums/${id}`, {
           method: "DELETE",
         });
         if (response.ok) {

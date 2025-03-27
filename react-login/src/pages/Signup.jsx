@@ -26,7 +26,7 @@ const Signup = () => {
   const handleSubmit = async (values) => {
     setLoading(true);
     try {
-      const response = await axios.post("http://139.59.60.185:3001/signup", {
+      const response = await axios.post(`${import.meta.env.VITE_APP_SERVER_URL}/signup`, {
         phonenumber: values.phone,
         password: values.password, // Include password in the request
         verificationCode: values.verificationCode,

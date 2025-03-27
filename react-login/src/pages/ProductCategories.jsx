@@ -41,7 +41,7 @@ const ProductCategories = () => {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "http://139.59.60.185:3001/productcategories"
+        `${import.meta.env.VITE_APP_SERVER_URL}/productcategories`
       );
       setCategories(response.data);
     } catch (error) {
@@ -52,7 +52,7 @@ const ProductCategories = () => {
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        "http://139.59.60.185:3001/products"
+        `${import.meta.env.VITE_APP_SERVER_URL}/products`
       );
       setProducts(response.data);
     } catch (error) {
@@ -68,7 +68,7 @@ const ProductCategories = () => {
       parentId: category.parentId ? category.parentId._id : null,  
       isPastryProduct: category.isPastryProduct,
       image: category.image
-        ? `http://139.59.60.185:3001/uploads/${category.image}`
+        ? `${import.meta.env.VITE_APP_SERVER_URL}/uploads/${category.image}`
         : null, // Set image URL properly
     });
   };
@@ -76,7 +76,7 @@ const ProductCategories = () => {
   const handleDelete = async (id) => {
     setLoading(true);
     try {
-      await axios.delete(`http://139.59.60.185:3001/productcategories/${id}`);
+      await axios.delete(`${import.meta.env.VITE_APP_SERVER_URL}/productcategories/${id}`);
       setCategories(categories.filter((category) => category._id !== id));
       message.success("Category deleted successfully!");
     } catch (error) {
@@ -98,7 +98,7 @@ const ProductCategories = () => {
       }
   
       const response = await axios.post(
-        "http://139.59.60.185:3001/productcategories",
+        `${import.meta.env.VITE_APP_SERVER_URL}/productcategories`,
         formData,
         {
           headers: {
@@ -139,7 +139,7 @@ const ProductCategories = () => {
       }
   
       const response = await axios.put(
-        `http://139.59.60.185:3001/productcategories/${currentCategory._id}`,
+        `${import.meta.env.VITE_APP_SERVER_URL}/productcategories/${currentCategory._id}`,
         formData,
         {
           headers: {
@@ -216,7 +216,7 @@ const ProductCategories = () => {
         record.image ? (
           <Image
             width={50}
-            src={`http://139.59.60.185:3001/uploads/${record.image}`}
+            src={`${import.meta.env.VITE_APP_SERVER_URL}/uploads/${record.image}`}
           />
         ) : (
           "No Image"
